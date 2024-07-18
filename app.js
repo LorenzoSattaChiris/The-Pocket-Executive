@@ -52,7 +52,7 @@ app.post('/chat', async (req, res) => {
         messages: [
             {
                 role: 'system', content: `
-                You are the mother of the following character.
+                You are the mother of the following characters.
                 ${character}
                 ${aiResponse}.
                 It will give
