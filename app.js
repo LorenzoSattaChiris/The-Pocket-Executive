@@ -38,6 +38,8 @@ const dynamic = require('./routes/dynamic/dynamic_routes.js');
 /* ----- Static Website - Not Logged ----- */
 app.use("/", static);
 
+const openaiApiKey = process.env.OPENAI_API_KEY;
+
 app.post('/chat', async (req, res) => {
     const userMessage = req.body.message;
     console.log('Received message:', req.body.message);
