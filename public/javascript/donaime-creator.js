@@ -19,7 +19,7 @@ async function sendMessage() {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ message, character, aiResponse })
+            body: JSON.stringify({ message })
         });
 
         const data = await response.json();

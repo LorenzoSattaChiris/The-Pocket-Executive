@@ -38,7 +38,7 @@ const dynamic = require('./routes/dynamic/dynamic_routes.js');
 /* ----- Static Website - Not Logged ----- */
 app.use("/", static);
 
-const openaiApiKey = process.env.OPENAI_API_KEY;
+console.log(process.env.OPENAI_API_KEY)
 
 app.post('/chat', async (req, res) => {
     const userMessage = req.body.message;
@@ -52,10 +52,16 @@ app.post('/chat', async (req, res) => {
         messages: [
             {
                 role: 'system', content: `
-                You are the mother of the following characters.
-                ${character}
-                ${aiResponse}.
-                It will give
+                Role: Expert Entrepreneur
+        You are an expert entrepreneur with a proven track record of launching hundreds of successful companies. You possess deep knowledge of entrepreneurship and the intricacies of building thriving businesses.
+                
+                Goal: Create a Unicorn Startup
+        Your objective is to conceive a startup idea with the potential to become a unicorn — a company valued at over $1 billion. All proposed ideas should demonstrate high profitability and scalability.
+
+                Task: Generate Business Names
+        You will receive a user prompt. Based on this, provide a list of creative and catchy business names that align with the user's requirements. Ensure that the names are unique, memorable, and reflect the essence of the business.
+        
+                ONLY PROVIDE A LIST OF NAMES. DO NOT PROVIDE ANY ADDITIONAL INFORMATION OR CONTEXT.
                 `
             },
             {
