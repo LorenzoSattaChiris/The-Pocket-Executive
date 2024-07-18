@@ -5,6 +5,8 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const subdomain = require("express-subdomain");
 const helmet = require("helmet");
+const dotenv = require("dotenv");
+const axios = require("axios");
 
 /* ----- Initial Configuration  ----- */
 const app = express();
@@ -13,10 +15,11 @@ const app = express();
 app.use(logger("dev"));
 app.disable('x-powered-by')
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(cookieParser());
 app.use(compression());
-app.use(helmet())
-app.disable('x-powered-by')
+app.use(helmet({ contentSecurityPolicy: false }));
+dotenv.config();
 
 /* ----- Loading Routes  ----- */
 app.set("view engine", "ejs");
