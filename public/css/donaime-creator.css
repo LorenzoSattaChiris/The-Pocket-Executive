@@ -1,115 +1,178 @@
 /* Global Styles */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    background-color: #f5f5f5;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #f5f5f5;
 }
 
 .container {
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-height: 90%;
 }
 
 header {
-    text-align: left;
-    margin-bottom: 20px;
+  text-align: left;
+  margin-bottom: 20px;
 }
 
 header .title {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
 }
 
 header .title #logo {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
 header .description {
-    font-size: 1.2rem;
-    color: #666;
+  font-size: 1rem;
+  color: #666;
 }
 
 main {
-    display: flex;
-    gap: 20px;
+  display: flex;
+  gap: 20px;
 }
 
 .editor {
-    flex: 2;
-    padding: 20px;
-    border: 2px solid #000;
-    border-radius: 10px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  flex: 2;
+  padding: 20px;
+  border: 2px solid #000;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .editor-toolbar {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
 }
 
 .editor textarea {
-    width: 100%;
-    height: 200px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1rem;
-    resize: none;
+  width: 100%;
+  height: 200px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  resize: none;
+}
+
+#chat-container {
+  width: 90%;
+  max-width: 600px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#chat-box {
+  height: 400px;
+  overflow-y: auto;
+  padding: 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+#messages {
+  display: flex;
+  flex-direction: column;
+}
+
+.message {
+  margin-bottom: 10px;
+}
+
+.message.user {
+  align-self: flex-end;
+  background-color: #e1ffc7;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.message.ai {
+  align-self: flex-start;
+  background-color: #f1f1f1;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+#user-input {
+  width: 80%;
+  padding: 10px;
+  border: none;
+  border-radius: 0 0 0 8px;
+  outline: none;
+}
+
+#send-button {
+  width: 20%;
+  padding: 10px;
+  border: none;
+  border-radius: 0 0 8px 0;
+  cursor: pointer;
+  background-color: #4caf50;
+  color: white;
 }
 
 .sidebar {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-.suggestions, .tools, .tips {
-    padding: 20px;
-    border: 2px solid #000;
-    border-radius: 10px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.suggestions,
+.tools,
+.tips {
+  padding: 20px;
+  border: 2px solid #000;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.suggestions h2, .tools h2, .tips h2 {
-    margin-top: 0;
+.suggestions h2,
+.tools h2,
+.tips h2 {
+  margin-top: 0;
 }
 
 .suggestion-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .suggestion-buttons button {
-    flex: 1 1 calc(50% - 10px);
-    padding: 10px;
-    border: 2px solid #000;
-    border-radius: 10px;
-    background-color: #fff;
-    cursor: pointer;
-    transition: background-color 0.3s;
+  flex: 1 1 calc(50% - 10px);
+  padding: 10px;
+  border: 2px solid #000;
+  border-radius: 10px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .suggestion-buttons button:hover {
-    background-color: #f0f0f0;
+  background-color: #f0f0f0;
 }
 
-.tools p, .tips p {
-    margin: 5px 0;
+.tools p,
+.tips p {
+  margin: 5px 0;
 }
 
 .tools p em {
-    font-style: normal;
-    font-weight: bold;
-    color: #333;
+  font-style: normal;
+  font-weight: bold;
+  color: #333;
 }

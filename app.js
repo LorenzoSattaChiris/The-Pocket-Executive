@@ -38,6 +38,48 @@ const dynamic = require('./routes/dynamic/dynamic_routes.js');
 /* ----- Static Website - Not Logged ----- */
 app.use("/", static);
 
+app.post('/chat', async (req, res) => {
+    const userMessage = req.body.message;
+    console.log('Received message:', req.body.message);
+
+    const character = req.body.character;
+    const aiResponse = req.body.aiResponse;
+
+    const gptRequestBody = {
+        model: 'gpt-3.5-turbo',
+        messages: [
+            {
+                role: 'system', content: `
+                You are the mother of the following character.
+                ${character}
+                ${aiResponse}.
+                It will give
+                `
+            },
+            {
+                role: 'user', content: userMessage
+            }
+        ],
+        max_tokens: 150,
+        temperature: 0.7
+    };
+
+    try {
+        const gptResponse = await axios.post('https://api.openai.com/v1/chat/completions', gptRequestBody, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`
+            }
+        });
+
+        const aiMessage = gptResponse.data.choices[0].message.content.trim();
+        res.json({ message: aiMessage });
+    } catch (error) {
+        console.error('Error calling OpenAI API:', error.response ? error.response.data : error.message);
+        res.json({ message: 'An error occurred while generating the response.' });
+    }
+});
+
 /* ----- Dynamy Website - Logged In ----- */
 router.use("/", dynamic);
 

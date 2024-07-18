@@ -6,14 +6,15 @@
             <img src="/logo/logo.svg" alt="Logo" id="logo">
             Donaime Creator
         </h1>
-        <p class="description">Description</p>
+        <p class="description">Find an original name paired with an available domain for your business.</p>
     </header>
     <main>
-        <div class="editor">
-            <div class="editor-toolbar">
-                <!-- Add toolbar buttons here -->
+        <div id="chat-container">
+            <div id="chat-box">
+                <div id="messages"></div>
             </div>
-            <textarea placeholder="Write here..."></textarea>
+            <input type="text" id="user-input" placeholder="Type your message...">
+            <button id="send-button">Send</button>
         </div>
         <div class="sidebar">
             <div class="suggestions">
@@ -43,5 +44,6 @@
     </main>
 </div>
 
+<script src="javascript/donaime-creator.js"></script>
 
 <%- include('partials/footer') -%>
