@@ -1,0 +1,23 @@
+{
+  "name": "thepocketexecutive",
+  "version": "0.1",
+  "description": "From aspiring to inspiring Entrepreneurs",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "The Pocket Executive Team",
+  "license": "ISC",
+  "dependencies": {
+    "compression": "^1.7.4",
+    "cookie-parser": "^1.4.6",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-subdomain": "^1.0.6",
+    "helmet": "^7.1.0",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  }
+}
