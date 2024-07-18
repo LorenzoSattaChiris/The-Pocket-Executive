@@ -8,12 +8,32 @@
       "description": "Validate your idea."
     },
     {
+      "name": "Problem Statement Helper",
+      "description": "Help you define your problem statement."
+    },
+    {
       "name": "Donaime Creator",
       "description": "Find an original name paired with an available domain for your business."
     },
     {
       "name": "Slogan Creator",
       "description": "Find an original slogan for your business."
+    },
+    {
+      "name": "Elevator Pitch Creator",
+      "description": "Create and Optimize your Elevator Pitch."
+    },
+    {
+      "name": "Business Model Canvas Creator",
+      "description": "Easily Create an AI assisted Business Model Canvas."
+    },
+    {
+      "name": "Market Analysis",
+      "description": "Help you Analyze your market and create customer personas."
+    },
+    {
+      "name": "Pitch Crafter",
+      "description": "Craft your pitch speech, deck and more with our AI assistant."
     }
   ]
   

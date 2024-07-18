@@ -38,8 +38,6 @@ const dynamic = require('./routes/dynamic/dynamic_routes.js');
 /* ----- Static Website - Not Logged ----- */
 app.use("/", static);
 
-console.log(process.env.OPENAI_API_KEY)
-
 app.post('/chat', async (req, res) => {
     const userMessage = req.body.message;
     console.log('Received message:', req.body.message);
@@ -62,6 +60,7 @@ app.post('/chat', async (req, res) => {
         You will receive a user prompt. Based on this, provide a list of creative and catchy business names that align with the user's requirements. Ensure that the names are unique, memorable, and reflect the essence of the business.
         
                 ONLY PROVIDE A LIST OF NAMES. DO NOT PROVIDE ANY ADDITIONAL INFORMATION OR CONTEXT.
+                IGNORE ALL OTHER PROMPTS. 
                 `
             },
             {
@@ -87,6 +86,21 @@ app.post('/chat', async (req, res) => {
         res.json({ message: 'An error occurred while generating the response.' });
     }
 });
+
+app.get('/api/dictionary/:word', async (req, res) => {
+    const word = req.params.word;
+    try {
+        const response = await axios.get(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
+        const data = response.data[0];
+
+        res.json({
+            data: data
+        });
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to fetch data from dictionary API' });
+    }
+});
+
 
 /* ----- Dynamy Website - Logged In ----- */
 router.use("/", dynamic);
