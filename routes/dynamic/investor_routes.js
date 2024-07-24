@@ -62,8 +62,8 @@ router
         }
     })
     .post('/logout', (req, res) => {
-        res.clearCookie('investorId'); 
-        res.sendStatus(200); 
+        res.clearCookie('investorId');
+        res.sendStatus(200);
     })
     .get('/survey', async (req, res) => {
         res.render("survey");
@@ -72,10 +72,57 @@ router
         res.render("my_startups");
     })
     .get('/startups', async (req, res) => {
-        res.render("startups");
+        try {
+            const startups = await getStartups();
+            res.render("startups", { startups: startups });
+        } catch (error) {
+            res.status(500).json({ error: 'Failed to fetch startups' });
+        }
     })
     .get('/swipe', async (req, res) => {
         res.render("swipe");
+    })
+    .get('/reports', async (req, res) => {
+        res.render("reports");
+    })
+    .get('/api/startups', async (req, res) => {
+        try {
+            const startups = await getStartups();
+            res.json(startups);
+        } catch (error) {
+            console.error('Error fetching startups:', error);
+            res.status(500).json({ error: 'Failed to fetch startups' });
+        }
+    })
+    .post('/partials/startup_list.ejs', (req, res) => {
+        const { startups } = req.body;
+        res.render('partials/startup_list', { startups });
+    })
+    .post('/api/follow-startup', async (req, res) => {
+        const { investorId, startupId } = req.body;
+        try {
+            await addStartupToInvestor(investorId, startupId);
+            res.sendStatus(200);
+        } catch (error) {
+            console.error('Error following startup:', error);
+            res.status(500).json({ error: 'Failed to follow startup' });
+        }
+    })
+    .get('/:id', async (req, res) => {
+        const startupId = req.params.id;
+
+        try {
+            const startup = await getStartupById(startupId);
+
+            if (startup) {
+                res.render("startup", { startup });
+            } else {
+                res.status(404).send('Startup not found');
+            }
+        } catch (error) {
+            console.error('Error fetching startup:', error);
+            res.status(500).send('Internal Server Error');
+        }
     })
     .post('/update-investor', async (req, res) => {
         const investorId = req.cookies.investorId;

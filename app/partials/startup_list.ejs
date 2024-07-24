@@ -1,5 +1,4 @@
-<%- include("partials/header", {css: "css/startup.css", title: "The Pocket Executive - " + startup.name, metaDescription: startup.description }) %>
-
+<% startups.forEach(startup => { %>
     <div class="startup" data-id="<%= startup.id %>">
         <h3><%= startup.name %></h3>
         <p><%= startup.description %></p>
@@ -12,12 +11,4 @@
         </div>
         <button class="more-button" onclick="openStartup('<%= startup.id %>')">More</button>
     </div>
-    <button onclick="goBack()" id="action-button">Back</button>
-
-<script>
-    function goBack() {
-        window.history.back();
-    }
-</script>
-
-<%- include('partials/footer') -%>
+<% }) %>

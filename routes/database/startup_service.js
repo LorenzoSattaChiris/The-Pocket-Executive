@@ -3,6 +3,7 @@ const dynamoDB = require('./database');
 const { v4: uuidv4 } = require('uuid');
 
 const TABLE_NAME = 'pockexe_startups';
+const TABLE_NAME_STARTUPS = 'pockexe_startups';
 
 const getItems = async () => {
     const params = {
@@ -71,9 +72,42 @@ const updateItem = async (id, updateParams) => {
     }
 };
 
+const getStartups = async () => {
+    const params = {
+        TableName: TABLE_NAME_STARTUPS,
+    };
+
+    try {
+        const data = await dynamoDB.send(new ScanCommand(params));
+        return data.Items;
+    } catch (error) {
+        console.error("Error scanning startups from DynamoDB", error);
+        throw new Error(error);
+    }
+};
+
+const getStartupById = async (id) => {
+    const params = {
+        TableName: TABLE_NAME_STARTUPS,
+        Key: {
+            id: id
+        }
+    };
+
+    try {
+        const data = await dynamoDB.send(new GetCommand(params));
+        return data.Item;
+    } catch (error) {
+        console.error("Error fetching startup from DynamoDB", error);
+        throw new Error(error);
+    }
+};
+
 module.exports = {
     getItems,
     getItem,
     putItem,
-    updateItem
+    updateItem,
+    getStartups,
+    getStartupById
 };

@@ -1,9 +1,5 @@
 [
     {
-      "name": "Full Pack",
-      "description": "All our modules, in one simple package."
-    },
-    {
       "name": "Idea Validator",
       "description": "Validate your idea."
     },

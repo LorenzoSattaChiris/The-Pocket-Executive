@@ -1,7 +1,6 @@
-<%- include("partials/header", {css:"css/home.css", title: "The Pocket Executive" , metaDescription:"From Aspiring to Inspiring Entrepreneurs"}) %>
+<%- include("partials/header", {css:"css/home.css", title: "The Pocket Executive", metaDescription:"From Aspiring to Inspiring Entrepreneurs"}) %>
 
 <script>
-    // Safely include JSON data in the script tag
     const startup_data = <%- JSON.stringify(items).replace(/</g, '\\u003c') %>;
     console.log(startup_data);
 </script>
@@ -14,9 +13,7 @@
 <div class="container">
     <div class="startup-name-container">
         <h2 id="startup-name">
-            <span>
-                <%= items.name %>
-            </span>
+            <span><%= items.name %></span>
             <img src="/images/pencil.svg" alt="Edit" id="edit-icon" onclick="window.location.href='/name-creator'">
         </h2>
     </div>
@@ -25,7 +22,23 @@
     </main>
 </div>
 
+<div id="key-data-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-button" id="close-modal-button">&times;</span>
+        <h2>Insert Key Data</h2>
+        <form id="key-data-form">
+            <input type="text" id="experience" name="experience" placeholder="Describe your Experience" value="<%= items.experience %>">
+            <input type="text" id="field" name="field" placeholder="What Field do you operate in?" value="<%= items.field %>">
+            <!-- <input type="text" id="description" name="field" placeholder="Your startup in a sentence" value="<%= items.description %>"> -->
+            <!-- <input type="text" id="mrr" name="mrr" placeholder="MRR ($)" value="<%= items.mrr %>">
+            <input type="text" id="tam" name="tam" placeholder="TAM ($)" value="<%= items.tam %>"> -->
+            <button type="button" id="submit-key-data">Save</button>
+        </form>
+    </div>
+</div>
+
 <div class="footer-buttons">
+    <button id="key_button" onclick="key_data()">Key Data</button>
     <button id="invite_button" onclick="invite()">Invite</button>
     <button id="logout_button" class="action-button" onclick="logout()">Logout</button>
 </div>

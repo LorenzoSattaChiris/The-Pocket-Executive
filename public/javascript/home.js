@@ -2,41 +2,23 @@
 const modulesContainer = document.getElementById('modules-container');
 
 // Ensure the startup-data script element exists before parsing
-const startupDataElement = document.getElementById('startup-data');
-const startupData = startupDataElement ? JSON.parse(startupDataElement.textContent) : {};
+const startupData = startup_data || {};
 
-fetch('javascript/modules.json')
-    .then(response => response.json())
-    .then(modules => {
-        const firstModule = modules[0];
-        const otherModules = modules.slice(1);
-
-        renderModules(firstModule, otherModules);
-
-        // searchInput.addEventListener('input', () => {
-        //     const searchTerm = searchInput.value.toLowerCase();
-        //     const filteredModules = otherModules.filter(module =>
-        //         module.name.toLowerCase().includes(searchTerm) ||
-        //         module.description.toLowerCase().includes(searchTerm)
-        //     );
-        //     renderModules(firstModule, filteredModules);
-        // });
-    });
-
-function renderModules(firstModule, modules) {
+// Function to render modules
+function renderModules(modules) {
     modulesContainer.innerHTML = '';
 
     modules.forEach(module => {
         const moduleElement = document.createElement('div');
         const moduleName = module.name.toLowerCase().replace(/ /g, '-');
-        const isActive = startupData[moduleName];
+        const isActive = startupData[moduleName] || (moduleName === 'market-analysis' && startupData.competitors);
 
         moduleElement.classList.add('module', isActive ? 'inactive' : 'active');
         if (isActive) {
             moduleElement.innerHTML = `
                 <h2>${module.name}</h2>
-                <p>${startupData[moduleName]}</p>
-                <button>Start</button>
+                <p>${startupData["competitors"] || ''}</p>
+                <button>Edit</button>
             `;
         } else {
             moduleElement.innerHTML = `
@@ -53,6 +35,13 @@ function renderModules(firstModule, modules) {
     });
 }
 
+// Fetch modules when page loads
+fetch('javascript/modules.json')
+    .then(response => response.json())
+    .then(modules => {
+        renderModules(modules);
+    })
+    .catch(error => console.error('Error fetching modules:', error));
 
 function invite() {
     // Ensure startup_data is available
@@ -63,7 +52,7 @@ function invite() {
 
     // Generate invite text with the ID
     const inviteText = `Join my startup on thepocketexecutive: https://startup.thepocketexecutive/\nUse the ID: "${startup_data.id}" (Secret ID)`;
-    console.log(inviteText)
+    console.log(inviteText);
     // Copy invite text to clipboard
     navigator.clipboard.writeText(inviteText).then(function () {
         alert('Invite copied to clipboard!');
@@ -89,3 +78,63 @@ function logout() {
             alert('Logout failed. Please try again.');
         });
 }
+
+// Modal functionality
+const modal = document.getElementById('key-data-modal');
+const openModalButton = document.getElementById('key_button');
+const closeModalButton = document.getElementById('close-modal-button');
+const submitKeyDataButton = document.getElementById('submit-key-data');
+
+openModalButton.addEventListener('click', () => {
+    modal.style.display = 'block';
+});
+
+closeModalButton.addEventListener('click', () => {
+    modal.style.display = 'none';
+});
+
+window.addEventListener('click', (event) => {
+    if (event.target == modal) {
+        modal.style.display = 'none';
+    }
+});
+
+submitKeyDataButton.addEventListener('click', async () => {
+    const field = document.getElementById('field').value;
+    const experience = document.getElementById('experience').value;
+    // const description = document.getElementById('description').value;
+    // const mrr = document.getElementById('mrr').value;
+    // const tam = document.getElementById('tam').value;
+
+    const data = {};
+    if (field) data.field = field;
+    if (experience) data.experience = experience;
+    // if (description) data.description = description;
+    // if (mrr) data.mrr = mrr;
+    // if (tam) data.tam = tam;
+
+    if (Object.keys(data).length === 0) {
+        alert('Please fill in at least one field.');
+        return;
+    }
+
+    try {
+        const response = await fetch('/api/saveKeyData', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        });
+
+        if (response.ok) {
+            alert('Key data saved successfully!');
+            modal.style.display = 'none';
+        } else {
+            alert('Failed to save key data.');
+        }
+    } catch (error) {
+        console.error('Error saving key data:', error);
+        alert('An error occurred while saving the key data.');
+    }
+});

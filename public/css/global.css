@@ -160,3 +160,15 @@ a {
   --link-color: 220, 204, 117;
 }
 
+@media (max-width: 767px) {
+  .title {
+    display: none;
+  }
+
+  .footer-buttons-container {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}

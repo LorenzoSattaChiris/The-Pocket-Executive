@@ -1,24 +1,16 @@
-<%-include("partials/header", {css:"css/startups.css", title: "The Pocket Executive" , metaDescription:"From Aspiring to Inspiring Entrepreneurs"}) %>
-
-<header>
-    <h1 class="title">
-        <img src="/logo/logo.svg" alt="Logo" id="logo">
-        Hi Kati, 
-    </h1>
-    <p class="subtitle">Let's find you a good deal</p>
-</header>
+<%- include("partials/header", {css:"css/startups.css", title: "Startups" , metaDescription:"Explore Startups"}) %>
 
 <main>
     <div class="search_bar">
         <input type="text" placeholder="Search ..." name="search" id="search-input">
-        <button><i class="fa fa-search"></i></button>
+        <button id="advanced-search-button">Advanced Search</button>
     </div>
     <div id="startup_list">
-
+        <%- include('partials/startup_list', { startups: startups.slice(0, 10) }) %>
     </div>
     <button id="swipe_switch">Switch to Swipe</button>
 </main>
 
-<script src="javascript/startups.js"></script>
+<script src="javascript/startup.js"></script>
 
 <%- include('partials/footer') -%>

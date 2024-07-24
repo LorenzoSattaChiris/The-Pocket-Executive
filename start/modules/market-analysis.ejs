@@ -1,0 +1,26 @@
+<%- include("partials/header", {css:"css/market-analysis.css", title: "The Pocket Executive | Market Analysis", metaDescription: "From Aspiring to Inspiring Entrepreneurs"}) %>
+
+<div class="container">
+    <header>
+        <h1 class="head">
+            <img src="/logo/logo.svg" alt="Logo" id="logo">
+            Market Analysis
+        </h1>
+        <p class="description">Study and learn from your competitors and alternatives.</p>
+    </header>
+    <main>
+        <textarea id="competitors_list" placeholder="Write your competitors here"><%= competitorsList %></textarea>
+        <input type="button" id="submit" class="action-button" value="Save">
+        <div id="studies">
+            <iframe width="50%" height="350" src="https://www.youtube.com/embed/Xs8ZTqRFpTg" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://fourweekmba.com/competitor-analysis/" width="49%" height="350" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </main>
+</div>
+
+<script>
+    const startupId = '<%= startupId %>';
+</script>
+<script src="/javascript/market-analysis.js"></script>
+
+<%- include('partials/footer') -%>

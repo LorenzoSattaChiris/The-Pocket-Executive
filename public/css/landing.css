@@ -4,6 +4,11 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
 }
 
 .container {
@@ -133,12 +138,79 @@ main {
   background-position: center;
 }
 
-.left-section {
-  background-image: url("left-background.jpg");
+/* CSS for h1 and h2 */
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
-.right-section {
-  background-image: url("right-background.jpg");
+h1::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 3px;
+  background-color: #007bff;
+  margin: 10px auto 0;
+}
+
+.title::after {
+  content: "";
+  display: none;
+}
+
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #34495e;
+  text-align: center;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+
+.left-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 50%;
+  width: 50%;
+  height: 100%;
+  background: url("/images/inv_signup.png") no-repeat -800% center;
+  background-size: cover;
+  opacity: 0.2;
+  z-index: -1;
+}
+
+.right-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  background: url("/images/inv_login.png") no-repeat 1500% center;
+  background-size: cover;
+  opacity: 0.2;
+  z-index: -1;
+}
+
+#video_container {
+  /* background: url("/images/signup.png") no-repeat center center; */
+  padding: 30px;
+  padding-bottom: 50px;
+  width: 80%;
+  align-self: center;
+  border-radius: 20px;
+}
+
+.save_header {
+  font-size: 3rem;
+  /* background-color: white; */
 }
 
 .module {
@@ -199,4 +271,68 @@ main {
   .module {
     width: calc(100% - 20px);
   }
+}
+
+.action-button {
+  display: inline-block;
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  margin: 5px 0;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.action-button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.action-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+}
+
+/* fooooter */
+footer {
+  color: #000000;
+  padding: 20px 0;
+  text-align: center;
+  width: 100%;
+  margin-top: 100px;
+  background: url("/images/signup.png") no-repeat center center;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  background-color: rgb(255, 255, 255,.2);
+  padding: 5px;
+  border-radius: 20px;
+}
+
+.footer-content p {
+  margin: 10px 0;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.footer-links a {
+  color: #00f;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #ff6347; /* A nice hover color for links */
 }
