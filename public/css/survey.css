@@ -1,0 +1,392 @@
+/* Heading Styles */
+h2 {
+  font-size: 30px;
+  margin-top: 50px;
+}
+
+/* Paragraph Styles */
+p {
+  font-size: 20px;
+}
+
+/* Input and Shuffle Button Styles */
+input,
+#shuffle_button,
+#object_icon,
+textarea {
+  display: block;
+  margin: 10px auto;
+  padding: 10px 20px;
+  font-size: 20px;
+  background-color: #1a1a1a;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  min-width: 20px;
+  max-width: 100%;
+  resize: none;
+  font-family: Lato, sans-serif;
+}
+
+/* Submit, Previous, and Final Submit Buttons Styles */
+#button-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 25px;
+  gap: 15px;
+}
+
+#submit,
+#prev,
+#finalSubmit {
+  margin: 0px auto;
+  padding: 10px 20px;
+  font-size: 20px;
+  background-color: #1a1a1a;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Values Paragraph Styles */
+.values_paragraph {
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+/* Container Styles */
+.buttons_containers {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: -1px auto;
+  width: 30%;
+  min-width: 300px;
+  max-width: 600px;
+  text-align: center;
+}
+
+/* Description */
+#description {
+  width: 50%;
+  height: 230px;
+  max-height: 230px;
+  min-height: 100px;
+}
+
+/* Card Styles */
+.description-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: top;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.description-container > * {
+  flex: 1;
+  margin-left: 10px;
+  margin-right: 10px;
+  min-width: 30%;
+}
+
+.relative-container {
+  position: relative;
+  display: inline-block;
+}
+
+#description {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.center-mic {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#speak_button {
+  background-color: #ffffff;
+  border: 2px solid #1a1a1a;
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+#speak_button:hover {
+  transform: scale(1.1);
+}
+
+.mic-icon {
+  width: 30px;
+  height: 30px;
+}
+
+.recording {
+  border: 2.5px solid red;
+  box-shadow: 3px 3px 0px rgba(255, 0, 0, 0.3),
+    -3px -3px 0px rgba(255, 0, 0, 0.3);
+  background: rgba(255, 205, 205, 0.4);
+}
+
+.recording > img {
+  filter: grayscale(100%) brightness(40%) sepia(100%) hue-rotate(-50deg)
+    saturate(600%) contrast(0.8);
+}
+
+.description-container > :first-child,
+.description-container > :last-child {
+  flex: 0.5;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.suggestions {
+  margin: 0;
+  flex-wrap: wrap;
+  height: fit-content;
+}
+
+/* Suggestions Card */
+.suggestions h3 {
+  margin-bottom: 0px;
+  font-size: 18px;
+}
+
+.suggestions ul {
+  list-style-type: none;
+  padding: 0;
+  text-align: left;
+}
+
+.suggestions li {
+  margin: 5px 0;
+}
+
+/* Actual Suggestions Card */
+.actual-suggestions {
+  position: relative;
+  width: 25%;
+}
+
+.suggestion-card {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  margin-bottom: 10px;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.yes-no-buttons {
+  display: flex;
+  justify-content: flex-start;
+  gap: 0px;
+  margin-bottom: 10px;
+}
+
+.yes-button,
+.no-button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+/* Hidden Card for Transition */
+.hidden-card {
+  transform: translateY(-20px);
+  opacity: 0;
+}
+
+@media screen and (max-width: 600px) {
+  .description-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  #description {
+    order: -1;
+    width: 98%;
+    margin: 1% auto;
+  }
+
+  #suggestions {
+    width: 90%;
+    margin: 0 auto;
+    padding: 10px;
+    padding-top: 0;
+    font-size: 12px;
+  }
+
+  #actual_suggestions_container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    font-size: 11px;
+  }
+
+  .suggestions_header {
+    display: none;
+  }
+
+  .card {
+    margin-bottom: 0px;
+    margin-top: 10px;
+    width: 88%;
+    margin-right: 2%;
+    padding-top: 1px;
+    padding-bottom: 1px;
+  }
+
+  .card > p {
+    font-size: 14px;
+  }
+
+  .yes-no-buttons {
+    gap: 0px;
+    margin-bottom: 0px;
+    margin-top: 5px;
+  }
+
+  .yes-button,
+  .no-button {
+    font-size: 16px;
+  }
+}
+
+/* Page, Previous, and Final Submit Styles */
+#page2,
+#page3,
+#prev,
+#finalSubmit,
+#startups,
+#logo_animated,
+#playerSubmit {
+  display: none;
+}
+
+/* Character Page */
+#startups {
+  justify-content: center;
+  align-items: flex-start;
+  padding: 25px;
+  padding-top: 0px;
+}
+
+.left-section,
+.right-section {
+  flex: 1;
+  margin: 5px;
+}
+
+#character-image {
+  max-width: 300px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.description,
+.objects {
+  text-align: left;
+}
+
+#logo_animated {
+  margin: 0 auto;
+  width: 3%;
+  min-width: 30px;
+  margin-top: 10px;
+}
+
+#character-image {
+  width: 60%;
+  margin-top: 20px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#iconic_sentence {
+  font-style: italic;
+  display: none;
+  margin-top: 8px;
+}
+
+.left-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: -25px;
+}
+
+.objects_container,
+.health_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin: 0;
+  margin-top: -10px;
+}
+
+#object_icon,
+#health_icon {
+  margin: 5px auto;
+  padding: 10px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#character_appearance {
+  font-size: 18px;
+}
+
+#objects,
+#health {
+  text-align: left;
+  margin-left: 8px;
+  font-size: 16px;
+  margin-top: -6px;
+}
+
+@media screen and (max-width: 600px) {
+  #startups {
+    flex-direction: column;
+  }
+
+  .left-section {
+    order: 1;
+  }
+
+  #health {
+    margin-top: 2px;
+  }
+}

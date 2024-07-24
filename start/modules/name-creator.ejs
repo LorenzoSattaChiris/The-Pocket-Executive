@@ -1,0 +1,49 @@
+<%-include("partials/header", {css:"css/name-creator.css", title: "The Pocket Executive | Name Creator" , metaDescription:"From Aspiring to Inspiring Entrepreneurs"}) %>
+
+<div class="container">
+    <header>
+        <h1 class="title">
+            <img src="/logo/logo.svg" alt="Logo" id="logo">
+            Name Creator
+        </h1>
+        <p class="description">Find an original name paired with an available domain for your business.</p>
+    </header>
+    <main>
+        <div id="chat-container">
+            <div id="chat-box">
+                <div id="messages"></div>
+            </div>
+            <input type="text" id="user-input" placeholder="Describe your Idea..">
+            <button id="send-button">Send</button>
+        </div>
+        <div class="sidebar">
+            <div class="suggestions">
+                <h2 id="suggestions-button">Suggestions</h2>
+                <div id="suggestions-container">
+                    <button>Suggestion</button>
+                    <button>Suggestion</button>
+                    <button>Suggestion</button>
+                    <button>Suggestion</button>
+                    <button>Suggestion</button>
+                    <button>Suggestion</button>
+                </div>
+            </div>
+            <div class="tools">
+                <h2>Tools</h2>
+                <p>Available Domains</p>
+                <p><em>Domain1.com $10 yr</em></p>
+                <p><em>Domain1.com $10 yr</em></p>
+                <p><em>Domain1.com $10 yr</em></p>
+                <p><em>Domain1.com $10 yr</em></p>
+            </div>
+            <div class="tips">
+                <h2>Tips and Tricks</h2>
+                <p>Advice Here...</p>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script src="javascript/name-creator.js"></script>
+
+<%- include('partials/footer') -%>

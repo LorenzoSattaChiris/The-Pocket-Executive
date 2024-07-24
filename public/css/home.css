@@ -6,6 +6,23 @@ body {
   box-sizing: border-box;
 }
 
+.title {
+  position: fixed;
+  top: 20px;
+  left: 25px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title #logo {
+  margin-right: 5px;
+  width: 1.3rem;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -16,28 +33,37 @@ header {
   text-align: center;
   margin-bottom: 20px;
   margin-top: 30px;
-  font-size: 2.5rem;
-}
-
-header .title {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-header .title #logo {
-  margin-right: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 
 header .subtitle {
-  font-size: 1.2rem;
+  font-size: 0.8rem;
   color: #666;
 }
 
-header p {
-  font-size: 1.2rem;
-  color: #666;
-  margin-bottom: 20px;
+.startup-name-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#startup-name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+#startup-name img {
+  margin-left: 10px;
+  width: 1.2rem;
+  cursor: pointer;
+}
+
+#startup-name img:hover {
+  transform: scale(1.1);
+  opacity: 0.6;
 }
 
 .search-bar {
@@ -75,15 +101,17 @@ main {
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
+  margin-top: 25px;
 }
 
 .module {
   border: 2px solid #000;
   border-radius: 10px;
-  padding: 20px;
-  width: calc(33% - 20px);
+  padding: 15px;
+  width: calc(45% - 20px);
   min-width: 250px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  height: 80px;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
   opacity: 0;
   transform: scale(0.9);
   animation: fadeIn 0.5s forwards;
@@ -114,7 +142,6 @@ main {
 }
 
 /* Keyframes for animation */
-
 @keyframes fadeIn {
   from {
     opacity: 0.6;
@@ -122,6 +149,37 @@ main {
   to {
     opacity: 1;
   }
+}
+
+/* Active Module Styles */
+.module.active {
+  border: 2px solid #00f;
+  background-color: #fff;
+  box-shadow: 1px 1px 10px rgba(0, 0, 255, 0.2);
+}
+
+.module.active .content {
+  display: none;
+}
+
+.module.active .plus {
+  font-size: 2rem;
+  color: #00f;
+  text-align: center;
+}
+
+.module.inactive {
+  border: 2px solid #00f;
+  background-color: #e0f7ff;
+  box-shadow: 1px 1px 10px rgba(0, 0, 255, 0.2);
+}
+
+.module.inactive .plus {
+  display: none;
+}
+
+.module.inactive .content {
+  display: block;
 }
 
 /* Responsive Styles */
@@ -135,4 +193,33 @@ main {
   .module {
     width: calc(100% - 20px);
   }
+}
+
+.footer-buttons {
+  text-align: center;
+  position: fixed;
+  bottom: 10px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-buttons button {
+  margin: 0 10px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: 2px solid #00f;
+  background-color: #fff;
+  color: #00f;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.footer-buttons button:hover {
+  background-color: #00f;
+  color: #fff;
 }

@@ -1,0 +1,43 @@
+<%-include("partials/header", {css:"css/dashboard.css", title: "The Pocket Executive" , metaDescription:"From Aspiring to Inspiring Entrepreneurs"}) %>
+
+
+
+
+<header>
+    <h2 class="head">
+        Welcome &#8202; <span id="investor-name"> <%= items.name %></span>, 
+    </h2>
+</header>
+
+<main>
+    <div class="section" id="survey">
+        <h2>Survey</h2>
+        <p>Answer a few questions, and we get the best deals for you.</p>
+        <button class="action-button" id="survey_button">Start Survey</button>
+    </div>
+    <div class="section" id="my_startups">
+        <h2>Your Startups</h2>
+        <p>The startups you follow or directly invest in.</p>
+        <button class="action-button" id="my_startups_button">See All</button>
+    </div>
+    <div class="row">
+        <div class="section" id="new_startups">
+            <h2>Browse Startups</h2>
+            <p>Discover new startups with our advanced search.</p>
+            <button class="action-button" id="new_startups_button">Search More</button>
+        </div>
+        <div class="section" id="reports">
+            <h2>Browse Reports</h2>
+            <p>Accurate and tailored data about the startup ecosystem.</p>
+            <button class="action-button" id="reports_button">Coming Soon</button>
+        </div>
+    </div>
+</main>
+
+<div class="footer-buttons">
+    <button id="logout_button" class="action-button" onclick="logout()">Logout</button>
+</div>
+
+<script src="javascript/dashboard.js"></script>
+
+<%- include('partials/footer') -%>

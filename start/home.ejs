@@ -1,0 +1,35 @@
+<%- include("partials/header", {css:"css/home.css", title: "The Pocket Executive" , metaDescription:"From Aspiring to Inspiring Entrepreneurs"}) %>
+
+<script>
+    // Safely include JSON data in the script tag
+    const startup_data = <%- JSON.stringify(items).replace(/</g, '\\u003c') %>;
+    console.log(startup_data);
+</script>
+
+<h1 class="title">
+    <img src="/logo/logo.svg" alt="Logo" id="logo">
+    The Pocket Executive
+</h1>
+
+<div class="container">
+    <div class="startup-name-container">
+        <h2 id="startup-name">
+            <span>
+                <%= items.name %>
+            </span>
+            <img src="/images/pencil.svg" alt="Edit" id="edit-icon" onclick="window.location.href='/name-creator'">
+        </h2>
+    </div>
+    <main id="modules-container">
+        <!-- Modules will be populated here by JavaScript based on startup_data -->
+    </main>
+</div>
+
+<div class="footer-buttons">
+    <button id="invite_button" onclick="invite()">Invite</button>
+    <button id="logout_button" class="action-button" onclick="logout()">Logout</button>
+</div>
+
+<script src="javascript/home.js"></script>
+
+<%- include('partials/footer') -%>

@@ -1,0 +1,16 @@
+<%-include("partials/header", {css:"css/my_startups.css", title: "The Pocket Executive" , metaDescription:"From Aspiring to Inspiring Entrepreneurs"}) %>
+
+<main>
+    <div class="search_bar">
+        <input type="text" placeholder="Search ..." name="search" id="search-input">
+        <button><i class="fa fa-search"></i></button>
+    </div>
+    <div id="startup_list">
+
+    </div>
+    <button id="swipe_switch">Switch to Swipe</button>
+</main>
+
+<script src="javascript/my_startups.js"></script>
+
+<%- include('partials/footer') -%>

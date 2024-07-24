@@ -1,0 +1,202 @@
+/* Global Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+header {
+  position: fixed;
+  top: 8px;
+  left: 50px;
+  text-align: left;
+  margin-bottom: 20px;
+  margin-top: 30px;
+  font-size: 1rem;
+}
+
+header .title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+header .title #logo {
+  margin-right: 10px;
+  width: 1.5rem;
+}
+
+header .subtitle {
+  font-size: 1.2rem;
+  color: #666;
+}
+
+header p {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.search-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.search-bar input {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+}
+
+.search-bar button {
+  padding: 11.5px 15px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-left: none;
+  border-radius: 0 5px 5px 0;
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+}
+
+.search-bar button i {
+  margin: 0;
+}
+
+.search-bar select {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  margin-right: -1px; /* To align with the input field */
+}
+
+.search-bar select option {
+  font-size: 1rem;
+}
+
+.search-bar select:focus {
+  border-color: #000;
+}
+
+.search-bar select::-ms-expand {
+  display: none; /* Remove the default arrow icon in IE */
+}
+
+.search-bar button {
+  padding: 11.5px 15px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-left: none;
+  border-radius: 0 5px 5px 0;
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+}
+
+.search-bar button i {
+  margin: 0;
+}
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100vh;
+}
+
+.section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+}
+
+.left-section {
+  background-image: url("left-background.jpg");
+}
+
+.right-section {
+  background-image: url("right-background.jpg");
+}
+
+.module {
+  border: 2px solid #000;
+  border-radius: 10px;
+  padding: 20px;
+  width: calc(33% - 20px);
+  min-width: 250px;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transform: scale(0.9);
+  animation: fadeIn 0.5s forwards;
+  position: relative;
+  cursor: pointer;
+}
+
+.module h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.module p {
+  color: #666;
+}
+
+.module button {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  border-radius: 10px;
+  padding: 5px 10px;
+  font-size: 1rem;
+  border: none;
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Keyframes for animation */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0.6;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .module {
+    width: calc(50% - 20px);
+  }
+}
+
+@media (max-width: 480px) {
+  .module {
+    width: calc(100% - 20px);
+  }
+}

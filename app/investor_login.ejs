@@ -1,0 +1,26 @@
+<%- include("partials/header", {css:"css/auth.css", title: "The Pocket Executive" , metaDescription:"From Aspiring to Inspiring Entrepreneurs"}) %>
+
+<main>
+    <header>
+        <h1 class="title">
+            <img src="/logo/logo.svg" alt="Logo" id="logo">
+            The Pocket Executive
+        </h1>
+        <p class="subtitle">Your personal Shark Tank</p>
+    </header>
+    <form action="/investor_login" method="post" id="login_form">
+        <input type="text" id="id" name="id" required placeholder="Investor ID Here..."><br>
+        <button type="submit">Login</button>
+    </form>
+    <a href="/investor_signup">Not a Member Yet?</a>
+    <br>
+    <a href="mailto:thepocketexecutive@gmail.com">Reset Your ID (Contact Us)</a>
+</main>
+
+<script>
+    document.body.classList.add('investor-login-page');
+</script>
+
+<script src="javascript/auth.js"></script>
+
+<%- include('partials/footer') -%>

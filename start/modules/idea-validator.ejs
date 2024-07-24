@@ -1,0 +1,23 @@
+<%-include("partials/header", {css:"css/idea-validator.css", title: "The Pocket Executive | Name Creator" , metaDescription:"From Aspiring to Inspiring Entrepreneurs"}) %>
+
+<body>
+    <div class="container">
+        <header>
+            <h1 class="title">
+                <img src="logo/logo.svg" alt="Logo" id="logo">
+                Idea Validation
+            </h1>
+            <p class="description">Validate your idea and the market need behind it.</p>
+        </header>
+        <main>
+            <textarea class="idea-input" placeholder="Write your idea here..."></textarea>
+            <div class="tools-container">
+                <div class="tool-box">Statista</div>
+                <div class="tool-box">Google Keywords</div>
+                <div class="tool-box wide">Chat GPT Suggestions</div>
+                <div class="tool-box wide">Other Tools</div>
+            </div>
+        </main>
+    </div>
+
+<%- include('partials/footer') -%>

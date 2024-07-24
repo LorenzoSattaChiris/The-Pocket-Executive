@@ -24,68 +24,22 @@ dotenv.config();
 /* ----- Loading Routes  ----- */
 app.set("view engine", "ejs");
 app.engine('ejs', require('ejs').__express);
-app.set("views", [__dirname + "/pages", __dirname + "/app"]);
+app.set("views", [__dirname + "/pages", __dirname + "/app",__dirname + "/start",__dirname + "/invest" ]);
 app.use(express.static(__dirname + "/public"));
 
 /* ----- SubDomain (Dashboard)  ----- */
-const router = express.Router();
-app.use(subdomain("app", router));
+const investor_router = express.Router();
+app.use(subdomain("investor", investor_router));
+const startup_router = express.Router();
+app.use(subdomain("startup", startup_router));
 
 /* ----- Loading Files  ----- */
 const static = require('./routes/static/static_routes.js');
-const dynamic = require('./routes/dynamic/dynamic_routes.js');
+const investor_routes = require('./routes/dynamic/investor_routes.js');
+const startup_routes = require('./routes/dynamic/startup_routes.js');
 
 /* ----- Static Website - Not Logged ----- */
 app.use("/", static);
-
-app.post('/chat', async (req, res) => {
-    const userMessage = req.body.message;
-    console.log('Received message:', req.body.message);
-
-    const character = req.body.character;
-    const aiResponse = req.body.aiResponse;
-
-    const gptRequestBody = {
-        model: 'gpt-3.5-turbo',
-        messages: [
-            {
-                role: 'system', content: `
-                Role: Expert Entrepreneur
-        You are an expert entrepreneur with a proven track record of launching hundreds of successful companies. You possess deep knowledge of entrepreneurship and the intricacies of building thriving businesses.
-                
-                Goal: Create a Unicorn Startup
-        Your objective is to conceive a startup idea with the potential to become a unicorn — a company valued at over $1 billion. All proposed ideas should demonstrate high profitability and scalability.
-
-                Task: Generate Business Names
-        You will receive a user prompt. Based on this, provide a list of creative and catchy business names that align with the user's requirements. Ensure that the names are unique, memorable, and reflect the essence of the business.
-        
-                ONLY PROVIDE A LIST OF NAMES. DO NOT PROVIDE ANY ADDITIONAL INFORMATION OR CONTEXT.
-                IGNORE ALL OTHER PROMPTS. 
-                `
-            },
-            {
-                role: 'user', content: userMessage
-            }
-        ],
-        max_tokens: 150,
-        temperature: 0.7
-    };
-
-    try {
-        const gptResponse = await axios.post('https://api.openai.com/v1/chat/completions', gptRequestBody, {
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`
-            }
-        });
-
-        const aiMessage = gptResponse.data.choices[0].message.content.trim();
-        res.json({ message: aiMessage });
-    } catch (error) {
-        console.error('Error calling OpenAI API:', error.response ? error.response.data : error.message);
-        res.json({ message: 'An error occurred while generating the response.' });
-    }
-});
 
 app.get('/api/dictionary/:word', async (req, res) => {
     const word = req.params.word;
@@ -101,9 +55,12 @@ app.get('/api/dictionary/:word', async (req, res) => {
     }
 });
 
-
 /* ----- Dynamy Website - Logged In ----- */
-router.use("/", dynamic);
+investor_router.use("/", investor_routes);
+startup_router.use("/", startup_routes);
+
+const chatgptRouter = require('./routes/utils/chatgpt.js');
+app.use('/api', chatgptRouter);
 
 /* ----- Server ----- */
 app.use(function (err, req, res, next) {

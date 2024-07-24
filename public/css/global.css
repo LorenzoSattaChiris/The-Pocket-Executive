@@ -89,13 +89,33 @@ td {
 
 /* Global styles */
 html {
-  overflow-x: hidden
+  overflow-x: hidden;
 }
 
 body {
   line-height: 1.5;
-  color: black;
   background-color: whitesmoke;
+  font-family: Lato, sans-serif;
+  color: #1a1a1a;
+  text-align: center;
+}
+
+.title {
+  position: fixed;
+  top: 20px;
+  left: 25px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+}
+
+.title #logo {
+  margin-right: 5px;
+  width: 1.3rem;
 }
 
 a {
@@ -117,3 +137,26 @@ a {
     left: calc(50% - 70px);
   }
 }
+
+:root {
+  --primary-color: 244, 136, 105;
+  --secondary-color: 253, 187, 45;
+  --bg-color: 255, 255, 255, 1;
+  --nav-color: 227, 119, 98;
+  --font-color: 30, 30, 30;
+  --note-color: 245, 245, 245;
+  --modal-color: 255, 252, 155;
+  --link-color: 214, 106, 85;
+}
+
+[data-theme="dark"] {
+  --primary-color: 184, 181, 273;
+  --secondary-color: 18, 18, 18;
+  --bg-color: 15, 15, 50, 1;
+  --nav-color: 20, 10, 5;
+  --font-color: 225, 225, 255;
+  --note-color: 10, 10, 60;
+  --modal-color: 20, 20, 60;
+  --link-color: 220, 204, 117;
+}
+

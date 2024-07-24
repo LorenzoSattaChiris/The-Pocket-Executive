@@ -1,0 +1,36 @@
+<%-include("partials/header", {css:"css/startup.css", title: "The Pocket Executive" , metaDescription:"From Aspiring to Inspiring Entrepreneurs"}) %>
+
+<header>
+    <h1 class="title">
+        <img src="/logo/logo.svg" alt="Logo" id="logo">
+        Startup Name
+    </h1>
+    <p class="subtitle">Startup Slogan</p>
+</header>
+
+<main>
+    <div id="survey">
+        <h2>Survey</h2>
+        <p>Answer a few questions, and we get the best deals for you.</p>
+        <button id="survey_button">Start Survey</button>
+    </div>
+    <div id="my_startups">
+        <h2>Your Startups</h2>
+        <p>The startups you follow or directly invest in.</p>
+        <button id="my_startups_button">See All</button>
+    </div>
+    <div id="new_startups">
+        <h2>Browser Startups</h2>
+        <p>Discover New startups with our advanced search.</p>
+        <button id="new_startups_button">Search More</button>
+    </div>
+    <div id="reports">
+        <h2>Browser Reports</h2>
+        <p>Accurate and tailored data about the startup ecosystem.</p>
+        <button id="reports_button">Coming Soon</button>
+    </div>
+</main>
+
+<script src="javascript/startup.js"></script>
+
+<%- include('partials/footer') -%>
